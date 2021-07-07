@@ -1,3 +1,4 @@
+# -*- mode: python -*- -*- coding: utf-8 -*-
 from typing import List
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession

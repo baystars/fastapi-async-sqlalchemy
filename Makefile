@@ -23,6 +23,9 @@ run: ## Run server
 create: ## Create table
 	python -m app.main
 
+drop-create: ## Drop and reate table
+	python -m app.main true
+
 help: ## Print this help
 	@echo 'Usage: make [target]'
 	@echo ''

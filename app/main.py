@@ -19,20 +19,9 @@ cli = typer.Typer()
 
 
 @cli.command()
-def db_init_models():
-    asyncio.run(init_models())
+def db_init_models(drop: bool = typer.Argument(False)):
+    asyncio.run(init_models(drop))
     print("Done")
-
-
-async def get_biggest_cities(session: AsyncSession) -> List[City]:
-    result = await session.execute(select(City).order_by(City.population.desc()).limit(20))
-    return result.scalars().all()
-
-
-def add_city(session: AsyncSession, name: str, population: int):
-    new_city = City(name=name, population=population)
-    session.add(new_city)
-    return new_city
 
     
 if __name__ == "__main__":
