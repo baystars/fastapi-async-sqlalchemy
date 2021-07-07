@@ -1,3 +1,4 @@
+# -*- mode: python -*- -*- coding: utf-8 -*-
 from sqlalchemy import (Column, String, Integer)
 
 from app.service.database import Base
