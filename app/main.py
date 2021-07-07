@@ -1,11 +1,10 @@
 from typing import List
 
 import asyncio
-import typer
 from fastapi import (FastAPI, Depends)
-
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
+import typer
 
 from app.utils import DuplicatedEntryError
 from app.service.database import (init_models, get_session)
@@ -49,6 +48,7 @@ def add_city(session: AsyncSession, name: str, population: int):
     new_city = models.City(name=name, population=population)
     session.add(new_city)
     return new_city
+
     
 if __name__ == "__main__":
     cli()

@@ -3,9 +3,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.ext.asyncio import create_async_engine
 from sqlalchemy.orm import sessionmaker
 
-
-# DATABASE_URL = "postgresql+asyncpg://postgres:postgres@localhost/asyncalchemy"
-DATABASE_URL = "sqlite+aiosqlite:///example.db"
+from app.config import DATABASE_URL
 
 engine = create_async_engine(DATABASE_URL, echo=True)
 Base = declarative_base()
@@ -16,7 +14,7 @@ async_session = sessionmaker(
 
 async def init_models():
     async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.drop_all)
+        # await conn.run_sync(Base.metadata.drop_all)
         await conn.run_sync(Base.metadata.create_all)
 
 
